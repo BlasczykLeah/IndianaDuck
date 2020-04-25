@@ -54,7 +54,7 @@ public class DuckJump : MonoBehaviour
         {
             if (isJumping)
             {
-                jumpTime -= Time.deltaTime;
+                jumpTime -= Time.fixedDeltaTime;
                 jumpForce += startingJump;
                 rb.AddForce(new Vector3(0, jumpForce, 0));
 

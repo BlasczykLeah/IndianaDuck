@@ -9,7 +9,7 @@ public class FieldOfViewEditor : Editor
     void OnSceneGUI()
     {
         EnemyPatrol enemy = (EnemyPatrol)target;
-        Handles.color = Color.white;
+        Handles.color = Color.red;
         Handles.DrawWireArc(enemy.transform.position, Vector3.up, Vector3.forward, 360, enemy.visionRadius);
 
         Vector3 viewA = enemy.AngleDirection(-enemy.visionAngle / 2, false);
