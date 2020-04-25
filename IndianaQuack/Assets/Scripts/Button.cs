@@ -6,6 +6,7 @@ public class Button : MonoBehaviour
 {
     public float timeLeft, maxTime;
     public bool startTimer;
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class Button : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             startTimer = true;
+            anim.SetBool("Open", true);
         }
     }
 
@@ -39,6 +41,7 @@ public class Button : MonoBehaviour
         {
             startTimer = false;
             timeLeft = maxTime;
+            anim.SetBool("Open", false);
         }
     }
 }
