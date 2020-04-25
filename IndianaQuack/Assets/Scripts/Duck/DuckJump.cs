@@ -16,10 +16,12 @@ public class DuckJump : MonoBehaviour
     public float glidingGrav;
 
     Rigidbody rb;
+    Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         currentGravity = startingGravity;
         jumpForce = jumpAdditor;
@@ -31,12 +33,15 @@ public class DuckJump : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                anim.SetTrigger("StartFly");
+                anim.SetBool("Fly", true);
                 rb.AddForce(Vector3.zero);
                 isGliding = true;
                 glidingGrav = startingGravity;
             }
             if (Input.GetKeyUp(KeyCode.Space))
             {
+                anim.SetBool("Fly", false);
                 rb.AddForce(Vector3.zero);
                 isGliding = false;
             }
@@ -58,7 +63,11 @@ public class DuckJump : MonoBehaviour
                 jumpForce += startingJump;
                 rb.AddForce(new Vector3(0, jumpForce, 0));
 
-                if (Input.GetKeyUp(KeyCode.Space)) isGliding = false;
+                if (Input.GetKeyUp(KeyCode.Space))
+                {
+                    isGliding = false;
+                    anim.SetBool("Fly", false);
+                }
 
                 if (jumpTime < 0)
                 {
@@ -92,6 +101,8 @@ public class DuckJump : MonoBehaviour
             onGround = false;
             isJumping = isGliding = true;
             currentGravity = startingGravity;
+            anim.SetTrigger("StartFly");
+            anim.SetBool("Fly", true);
         }
 
     }
@@ -105,6 +116,7 @@ public class DuckJump : MonoBehaviour
                 onGround = true;
                 isGliding = isJumping = false;
                 currentGravity = glidingGrav = startingGravity;
+                //anim.SetBool("Fly", false);
             }
         }
     }
@@ -114,6 +126,7 @@ public class DuckJump : MonoBehaviour
         if ((jumpables & 1 << collision.gameObject.layer) == 1 << collision.gameObject.layer)
         {
             onGround = false;
+            //anim.SetBool("Fly", true);
         }
     }
 }
