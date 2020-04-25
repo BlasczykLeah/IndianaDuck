@@ -200,6 +200,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 300
   rotSpeed: 300
+  jumpForce: 900
+  fallSpeed: -20
+  onGround: 0
+  gravityScale: 20
 --- !u!1 &5484261608180288571
 GameObject:
   m_ObjectHideFlags: 0
