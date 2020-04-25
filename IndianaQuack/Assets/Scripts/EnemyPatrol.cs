@@ -48,13 +48,18 @@ public class EnemyPatrol : MonoBehaviour
 
         if (stunned)
         {
-            agent.speed = 0;
+            //agent.speed = 0;
+            agent.isStopped = true;
+
             stunCounting -= Time.deltaTime;
+            agent.SetDestination(transform.position);
+
             if (stunCounting < 0)
             {
                 // reset stun
                 stunned = false;
-                agent.speed = moveSpeed;
+                //agent.speed = moveSpeed;
+                agent.isStopped = false;
                 stunCounting = stunTime;
             }
         }
@@ -66,12 +71,12 @@ public class EnemyPatrol : MonoBehaviour
             {
                 playerSpotted = false;
                 trackingCooldown = resetNumber;
-                MoveToPoint(currentPoint);
+                if(!stunned) MoveToPoint(currentPoint);
             }
         }
         else
         {
-            if (agent.remainingDistance == 0 && agent.pathStatus == NavMeshPathStatus.PathComplete && isMoving)
+            if (agent.remainingDistance == 0 && agent.pathStatus == NavMeshPathStatus.PathComplete && isMoving && !stunned)
             {
                 isMoving = false;
                 UpdateDestination();
@@ -103,7 +108,7 @@ public class EnemyPatrol : MonoBehaviour
                     playerSpotted = true;
                     trackingCooldown = resetNumber;
 
-                    playerLocation = targetFound[0].transform.position;
+                    playerLocation = new Vector3(targetFound[0].transform.position.x, transform.position.y, targetFound[0].transform.position.z);
                     MoveToPlayer();
                 }
             }
@@ -153,4 +158,12 @@ public class EnemyPatrol : MonoBehaviour
         else MoveToPoint(currentPoint);
     }
     #endregion
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if((LayerMask.GetMask("Ground") & 1 << collision.gameObject.layer) == 1 << collision.gameObject.layer)
+        {
+            rb.isKinematic = true;
+        }
+    }
 }
