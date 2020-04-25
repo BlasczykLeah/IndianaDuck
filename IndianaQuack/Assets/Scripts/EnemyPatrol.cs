@@ -67,11 +67,11 @@ public class EnemyPatrol : MonoBehaviour
         if (playerSpotted)
         {
             trackingCooldown -= Time.deltaTime;
-            if(trackingCooldown < 0)
+            if (trackingCooldown < 0)
             {
                 playerSpotted = false;
                 trackingCooldown = resetNumber;
-                if(!stunned) MoveToPoint(currentPoint);
+                if (!stunned) MoveToPoint(currentPoint);
             }
         }
         else
