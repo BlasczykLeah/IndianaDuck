@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class LifeOfDuck : MonoBehaviour
 {
-    public Transform spawn;
+    public Vector3 spawn;
+    public GameObject blackScreen;
+    public bool dying = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +22,25 @@ public class LifeOfDuck : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Deetth"))
+        if (!dying)
         {
-            this.transform.position = spawn.transform.position;
+            if (collision.gameObject.CompareTag("Deetth") || collision.gameObject.CompareTag("Enemy"))
+            {
+                GetComponent<DuckMove>().enabled = false;
+                dying = true;
+                blackScreen.SetActive(true);
+            }
         }
+    }
+
+    public void MoveToSpawn()
+    {
+        transform.position = spawn;
+    }
+
+    public void EnableControls()
+    {
+        GetComponent<DuckMove>().enabled = true;
+        dying = false;
     }
 }
