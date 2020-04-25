@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1208384451259647814}
   m_Layer: 0
   m_Name: body_JNT1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 6495217256757765513}
   m_Layer: 0
   m_Name: pCube5
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 6495217257075579450}
   m_Layer: 0
   m_Name: SnakeEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -369,7 +369,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2955004263425258421}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.05
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -397,11 +397,12 @@ MonoBehaviour:
   stunned: 0
   stunTime: 3
   movementCorners:
-  - {x: 1, y: 0, z: 3}
-  - {x: 5, y: 0, z: 2}
+  - {x: 4, y: 0, z: 1}
+  - {x: 6, y: 0, z: -6}
+  - {x: -6, y: 0, z: -6}
   playerLocation: {x: 0, y: 0, z: 0}
   currentPoint: 0
-  movementLoops: 1
+  movementLoops: 0
   moveSpeed: 3.5
   visionRadius: 6.79
   visionAngle: 135
