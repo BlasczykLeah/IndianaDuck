@@ -30,7 +30,7 @@ public class DuckMove : MonoBehaviour
         //Vector3 gravity = globalGravity * gravityScale * Vector3.up;
         //rb.AddForce(gravity, ForceMode.Acceleration);
 
-        if (onGround)
+        /*if (onGround)
         {
             Jump();
         }
@@ -38,7 +38,7 @@ public class DuckMove : MonoBehaviour
         {
             float yVel = rb.velocity.y * gravityScale;
             rb.velocity = new Vector3(rb.velocity.x, yVel, rb.velocity.z);
-        }
+        }*/
     }
 
     void Waddle()
