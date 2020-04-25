@@ -6,6 +6,10 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Rigidbody))]
 public class EnemyPatrol : MonoBehaviour
 {
+    public bool stunned;
+    public float stunTime;
+    float stunCounting;
+
     [Header("Patrol Properties")]
     public Vector3[] movementCorners;    // points of movement
     public Vector3 playerLocation;
@@ -13,6 +17,7 @@ public class EnemyPatrol : MonoBehaviour
     public bool movementLoops;      // if movement loops, go from last point -> first point, else go from last point -> second last point (reverse order)
     bool reverse;
     bool isMoving;
+    public float moveSpeed = 3.5F;
 
     [Header("Vision Properties")]
     public float visionRadius;
@@ -40,6 +45,19 @@ public class EnemyPatrol : MonoBehaviour
         // if movementCorners.length = 1, no moving to targets only if targets player then go back
 
         FindTarget();
+
+        if (stunned)
+        {
+            agent.speed = 0;
+            stunCounting -= Time.deltaTime;
+            if (stunCounting < 0)
+            {
+                // reset stun
+                stunned = false;
+                agent.speed = moveSpeed;
+                stunCounting = stunTime;
+            }
+        }
 
         if (playerSpotted)
         {

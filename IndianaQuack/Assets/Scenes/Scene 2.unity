@@ -155,6 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2481ad61caca546bc3a1782f8e7eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stunned: 0
+  stunTime: 3
   movementCorners:
   - {x: 5, y: 0, z: 5}
   - {x: 2, y: 0, z: 5}
@@ -163,6 +165,7 @@ MonoBehaviour:
   playerLocation: {x: 0, y: 0, z: 0}
   currentPoint: 0
   movementLoops: 0
+  moveSpeed: 3.5
   visionRadius: 6.79
   visionAngle: 135
   trackingCooldown: 0
