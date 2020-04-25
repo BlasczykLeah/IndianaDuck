@@ -153,4 +153,12 @@ public class EnemyPatrol : MonoBehaviour
         else MoveToPoint(currentPoint);
     }
     #endregion
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if((LayerMask.GetMask("Ground") & 1 << collision.gameObject.layer) == 1 << collision.gameObject.layer)
+        {
+            rb.isKinematic = true;
+        }
+    }
 }
