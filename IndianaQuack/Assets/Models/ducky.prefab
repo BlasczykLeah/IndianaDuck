@@ -42,7 +42,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -142,7 +142,10 @@ GameObject:
   - component: {fileID: 139713012}
   - component: {fileID: 139713010}
   - component: {fileID: 1076483302}
+  - component: {fileID: 5490002335834028929}
   - component: {fileID: 1076483303}
+  - component: {fileID: 71144912}
+  - component: {fileID: 1076483304}
   m_Layer: 8
   m_Name: ducky
   m_TagString: Player
@@ -180,7 +183,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4398034695589323622}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -216,15 +219,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpables:
     serializedVersion: 2
-    m_Bits: 513
-  onGround: 0
+    m_Bits: 1536
+  onGround: 1
   isJumping: 0
   isGliding: 0
-  gravMultiplier: 1.18
-  startingGravity: -10
-  startingJump: 12
-  jumpAdditor: 10
-  glidingGrav: -10
+  gravMultiplier: 1.28
+  startingGravity: -35
+  startingJump: 70
+  jumpAdditor: 65
+  glidingGrav: -35
+--- !u!65 &5490002335834028929
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398034695589323622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.024027085, y: 0.0073911324, z: 0.011120486}
+  m_Center: {x: 0.0013976932, y: -0.0005741172, z: -0.0038631738}
 --- !u!114 &1076483303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +253,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57de14fab39ba14c8a61ba43bb4eae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quackRadius: 5
+  layer:
+    serializedVersion: 2
+    m_Bits: 1
+  hasQuacked: 0
+  quackCooldown: 2
+  delayQuack: 0.2
+--- !u!114 &71144912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398034695589323622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2633d31e3d06a3b46b4e8ea511882159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {x: 0, y: 0, z: 0}
+  blackScreen: {fileID: 0}
+  dying: 0
+--- !u!114 &1076483304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398034695589323622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2633d31e3d06a3b46b4e8ea511882159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {x: 0, y: 0, z: 0}
+  blackScreen: {fileID: 0}
+  dying: 0
 --- !u!1 &5484261608180288571
 GameObject:
   m_ObjectHideFlags: 0
