@@ -14,11 +14,6 @@ public class DuckMove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         Waddle();
