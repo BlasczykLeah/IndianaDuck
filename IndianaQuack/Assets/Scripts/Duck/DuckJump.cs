@@ -25,8 +25,26 @@ public class DuckJump : MonoBehaviour
         jumpForce = jumpAdditor;
     }
 
+    private void Update()
+    {
+        if (!onGround)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                rb.AddForce(Vector3.zero);
+                isGliding = true;
+                glidingGrav = startingGravity;
+            }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                rb.AddForce(Vector3.zero);
+                isGliding = false;
+            }
+        }
+    }
+
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (onGround)
         {
@@ -53,18 +71,6 @@ public class DuckJump : MonoBehaviour
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    rb.AddForce(Vector3.zero);
-                    isGliding = true;
-                    glidingGrav = startingGravity;
-                }
-                if (Input.GetKeyUp(KeyCode.Space))
-                {
-                    rb.AddForce(Vector3.zero);
-                    isGliding = false;
-                }
-
                 if (!isGliding)
                 {
                     rb.AddForce(new Vector3(0, currentGravity, 0));
@@ -81,7 +87,7 @@ public class DuckJump : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && !isJumping && !isGliding)
         {
             onGround = false;
             isJumping = isGliding = true;
@@ -97,6 +103,7 @@ public class DuckJump : MonoBehaviour
             if (!isJumping)
             {
                 onGround = true;
+                isGliding = isJumping = false;
                 currentGravity = glidingGrav = startingGravity;
             }
         }
