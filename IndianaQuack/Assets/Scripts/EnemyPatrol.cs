@@ -15,6 +15,14 @@ public class EnemyPatrol : MonoBehaviour
     bool isMoving;
 
     [Header("Vision Properties")]
+    public float visionRadius;
+    [Range(0, 360)]
+    public float visionAngle;
+    bool playerSpotted = false;
+    public float trackingCooldown;
+    public float resetNumber;
+    public LayerMask targetMask;
+    public LayerMask obstacleMask;
 
     Rigidbody rb;
     NavMeshAgent agent;
@@ -24,23 +32,79 @@ public class EnemyPatrol : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         MoveToPoint(currentPoint);
+        StartCoroutine("DelayTargetFinder", 0.2F);
     }
 
     void Update()
     {
-        if (agent.remainingDistance == 0 && agent.pathStatus == NavMeshPathStatus.PathComplete && isMoving) // agent.remainingDistance == 0
+        // if movementCorners.length = 1, no moving to targets only if targets player then go back
+
+        FindTarget();
+
+        if (playerSpotted)
         {
-            isMoving = false;
-            UpdateDestination();
-            MoveToPoint(currentPoint);
+            trackingCooldown -= Time.deltaTime;
+            if(trackingCooldown < 0)
+            {
+                playerSpotted = false;
+                trackingCooldown = resetNumber;
+                MoveToPoint(currentPoint);
+            }
+        }
+        else
+        {
+            if (agent.remainingDistance == 0 && agent.pathStatus == NavMeshPathStatus.PathComplete && isMoving)
+            {
+                isMoving = false;
+                UpdateDestination();
+                MoveToPoint(currentPoint);
+            }
         }
     }
 
-    void MoveToPoint(int pointIndex)
+    #region Field of View
+
+    public Vector3 AngleDirection(float angle, bool angleIsGlobal)
     {
-        isMoving = true;
-        agent.SetDestination(movementCorners[pointIndex]);
+        if (!angleIsGlobal) angle += transform.eulerAngles.y;
+        return new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), 0, Mathf.Cos(angle * Mathf.Deg2Rad));
     }
+
+    void FindTarget()
+    {
+        Collider[] targetFound = Physics.OverlapSphere(transform.position, visionRadius, targetMask);
+
+        if(targetFound.Length > 0)
+        {
+            Vector3 directionToTarget = (targetFound[0].transform.position - transform.position).normalized;
+            if(Vector3.Angle(transform.forward, directionToTarget) < visionAngle / 2)
+            {
+                float distanceToTarget = Vector3.Distance(transform.position, targetFound[0].transform.position);
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleMask))
+                {
+                    playerSpotted = true;
+                    trackingCooldown = resetNumber;
+
+                    playerLocation = targetFound[0].transform.position;
+                    MoveToPlayer();
+                }
+            }
+        }
+        //StartCoroutine("DelayTargetFinder", 0.2F);
+    }
+
+    IEnumerator DelayTargetFinder(float delay)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(delay);
+            FindTarget();
+        }
+    }
+
+    #endregion
+
+    #region Movements
 
     void UpdateDestination()
     {
@@ -59,9 +123,16 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
+    void MoveToPoint(int pointIndex)
+    {
+        isMoving = true;
+        agent.SetDestination(movementCorners[pointIndex]);
+    }
+
     void MoveToPlayer()
     {
         if (playerLocation != null) agent.SetDestination(playerLocation);
         else MoveToPoint(currentPoint);
     }
+    #endregion
 }
