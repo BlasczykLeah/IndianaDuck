@@ -16,24 +16,29 @@ public class DuckMove : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.useGravity = false;
     }
 
     void Update()
     {
-        if (!onGround)
-        {
-            rb.AddForce(0, fallSpeed, 0);
-        }
+
     }
 
     private void FixedUpdate()
     {
         Waddle();
-        Jump();
 
-        Vector3 gravity = globalGravity * gravityScale * Vector3.up;
-        rb.AddForce(gravity, ForceMode.Acceleration);
+        //Vector3 gravity = globalGravity * gravityScale * Vector3.up;
+        //rb.AddForce(gravity, ForceMode.Acceleration);
+
+        if (onGround)
+        {
+            Jump();
+        }
+        else
+        {
+            float yVel = rb.velocity.y * gravityScale;
+            rb.velocity = new Vector3(rb.velocity.x, yVel, rb.velocity.z);
+        }
     }
 
     void Waddle()
