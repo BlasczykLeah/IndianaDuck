@@ -29,7 +29,7 @@ public class DuckMove : MonoBehaviour
         vert = Input.GetAxisRaw("Vertical");
         horz = Input.GetAxisRaw("Horizontal");
 
-        rb.velocity = (transform.forward * vert) * moveSpeed * Time.fixedDeltaTime;
+        rb.velocity = transform.forward * vert * moveSpeed * Time.fixedDeltaTime * -1;
         transform.Rotate((transform.up * horz) * rotSpeed * Time.fixedDeltaTime);
     }
 }
