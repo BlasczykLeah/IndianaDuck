@@ -79,7 +79,7 @@ public class DuckJump : MonoBehaviour
                 else
                 {
                     rb.AddForce(new Vector3(0, glidingGrav, 0));
-                    glidingGrav *= (gravMultiplier * 0.85F);
+                    glidingGrav *= (gravMultiplier * 0.83F);
                 }
             }
         }
@@ -96,7 +96,7 @@ public class DuckJump : MonoBehaviour
 
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider collision)
     {
         if ((jumpables & 1 << collision.gameObject.layer) == 1 << collision.gameObject.layer)
         {
@@ -109,7 +109,7 @@ public class DuckJump : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
         if ((jumpables & 1 << collision.gameObject.layer) == 1 << collision.gameObject.layer)
         {

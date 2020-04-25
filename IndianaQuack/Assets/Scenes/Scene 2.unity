@@ -211,7 +211,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &752320870
 PrefabInstance:
@@ -279,6 +279,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SnakeEnemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955004263425258421, guid: d9abb74d08fd2544ab7fde7c01494478,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9abb74d08fd2544ab7fde7c01494478, type: 3}
@@ -356,17 +361,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1076483302, guid: 445d95c4b01ec2846823a299c6cb5e20, type: 3}
-      propertyPath: jumpables.m_Bits
-      value: 1536
+      propertyPath: onGround
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1076483303, guid: 445d95c4b01ec2846823a299c6cb5e20, type: 3}
-      propertyPath: quackRadius
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1076483303, guid: 445d95c4b01ec2846823a299c6cb5e20, type: 3}
-      propertyPath: layer.m_Bits
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 1076483304, guid: 445d95c4b01ec2846823a299c6cb5e20, type: 3}
+      propertyPath: blackScreen
+      value: 
+      objectReference: {fileID: 2086011610}
     - target: {fileID: 816185726653108597, guid: 445d95c4b01ec2846823a299c6cb5e20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -429,27 +430,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 445d95c4b01ec2846823a299c6cb5e20, type: 3}
---- !u!1 &1076483298 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4398034695589323622, guid: 445d95c4b01ec2846823a299c6cb5e20,
+--- !u!114 &1076483304 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1076483304, guid: 445d95c4b01ec2846823a299c6cb5e20,
     type: 3}
   m_PrefabInstance: {fileID: 1073158708}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1076483304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1076483298}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2633d31e3d06a3b46b4e8ea511882159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawn: {x: 0, y: 0, z: 0}
-  blackScreen: {fileID: 2086011610}
-  dying: 0
 --- !u!1 &1089228267
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +727,7 @@ Transform:
   m_Children:
   - {fileID: 1101555128}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2086011610
 GameObject:
@@ -889,7 +881,7 @@ PrefabInstance:
     - target: {fileID: 3176379171967960963, guid: 7146f9db41ab68e4cb93fa658a56928d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3176379171967960963, guid: 7146f9db41ab68e4cb93fa658a56928d,
         type: 3}
@@ -968,7 +960,7 @@ PrefabInstance:
     - target: {fileID: 2258855793336828326, guid: d9abb74d08fd2544ab7fde7c01494478,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2258855793336828326, guid: d9abb74d08fd2544ab7fde7c01494478,
         type: 3}
@@ -989,6 +981,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SnakeEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955004263425258421, guid: d9abb74d08fd2544ab7fde7c01494478,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9abb74d08fd2544ab7fde7c01494478, type: 3}
