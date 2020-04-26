@@ -7,6 +7,7 @@ public class CameraChase : MonoBehaviour
     //public bool revert;
     //public bool used;
 
+    bool won = false;
         public GameObject black;
 
     /*private void OnTriggerEnter(Collider other)
@@ -31,9 +32,10 @@ public class CameraChase : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !won)
         {
             black.SetActive(true);
+            won = true;
         }
     }
 }

@@ -24,4 +24,9 @@ public class TitleScene : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
+
+    public void title()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
