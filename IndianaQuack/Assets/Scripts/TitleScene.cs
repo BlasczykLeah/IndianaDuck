@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class TitleScene : MonoBehaviour
 {
+    public bool inGame;
+
     private void Start()
     {
         Time.timeScale = 1;
+        Cursor.visible = true;
     }
 
     public void Play()
