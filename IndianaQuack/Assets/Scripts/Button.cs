@@ -7,6 +7,8 @@ public class Button : MonoBehaviour
     public float timeLeft, maxTime;
     public bool startTimer;
     public Animator anim;
+    public bool boulder;
+    public Boulder b;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,12 @@ public class Button : MonoBehaviour
             if(!startTimer) anim.SetBool("Open", true);
             startTimer = true;
             timeLeft = maxTime;
+
+            if (boulder)
+            {
+                b.rollBoulder();
+                boulder = false;
+            }
         }
     }
 

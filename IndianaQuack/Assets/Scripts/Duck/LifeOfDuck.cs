@@ -9,6 +9,7 @@ public class LifeOfDuck : MonoBehaviour
     public GameObject blackScreen;
     public bool dying = false;
     GameObject bolder;
+    public CameraAutoZoom c;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -38,6 +39,7 @@ public class LifeOfDuck : MonoBehaviour
             bolder.GetComponent<Boulder>().resetBold();
             bolder = null;
         }
+        c.zoomingOut = true;
     }
 
     public void EnableControls()
