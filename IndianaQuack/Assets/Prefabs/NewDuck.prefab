@@ -1088,6 +1088,7 @@ GameObject:
   - component: {fileID: 6258899905235053401}
   - component: {fileID: 5138682748378977132}
   - component: {fileID: 1953196823}
+  - component: {fileID: 554292173}
   m_Layer: 8
   m_Name: feet
   m_TagString: Untagged
@@ -1192,11 +1193,25 @@ MeshCollider:
   m_GameObject: {fileID: 3496048351538065895}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4261417502868088817, guid: 19c8b34ce575534419c1afef96e1dc24, type: 3}
+--- !u!136 &554292173
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3496048351538065895}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0056063784
+  m_Height: 0.0335143
+  m_Direction: 0
+  m_Center: {x: -0.0009839089, y: 0.0055821287, z: -0.0047541307}
 --- !u!1 &4923604893273231765
 GameObject:
   m_ObjectHideFlags: 0
