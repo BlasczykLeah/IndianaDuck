@@ -11,6 +11,13 @@ public class LifeOfDuck : MonoBehaviour
     GameObject bolder;
     public CameraAutoZoom c;
 
+    AudioManager AM;
+
+    private void Start()
+    {
+        AM = AudioManager.instance;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Deetth") || collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boulder"))

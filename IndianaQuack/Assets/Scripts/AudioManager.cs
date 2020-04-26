@@ -32,4 +32,9 @@ public class AudioManager : MonoBehaviour
     {
         clock.Play();
     }
+
+    public void StopTime()
+    {
+        clock.Stop();
+    }
 }
