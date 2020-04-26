@@ -116,7 +116,7 @@ public class DuckJump : MonoBehaviour
                 onGround = true;
                 isGliding = isJumping = false;
                 currentGravity = glidingGrav = startingGravity;
-                //anim.SetBool("Fly", false);
+                anim.SetBool("Fly", false);
             }
         }
     }
