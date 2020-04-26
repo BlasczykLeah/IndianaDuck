@@ -16176,6 +16176,10 @@ PrefabInstance:
       propertyPath: blackScreen
       value: 
       objectReference: {fileID: 107937858}
+    - target: {fileID: 482739157, guid: e25597aa89cf18d4e98a44610f3cd070, type: 3}
+      propertyPath: moveSpeed
+      value: 270
+      objectReference: {fileID: 0}
     - target: {fileID: 1279826022617198859, guid: e25597aa89cf18d4e98a44610f3cd070,
         type: 3}
       propertyPath: m_Name
