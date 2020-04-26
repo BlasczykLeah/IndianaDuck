@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class LifeOfDuck : MonoBehaviour
 {
-    public Vector3 spawn;
+    public Transform spawnPoint;
+    Vector3 spawn;
     public GameObject blackScreen;
     public bool dying = false;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (spawnPoint == null) spawn = Vector3.zero;
+        else UpdateSpawn(spawnPoint);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -42,5 +37,10 @@ public class LifeOfDuck : MonoBehaviour
     {
         GetComponent<DuckMove>().enabled = true;
         dying = false;
+    }
+
+    public void UpdateSpawn(Transform t)
+    {
+        spawn = new Vector3(t.position.x, t.position.y, t.position.z);
     }
 }
