@@ -11,8 +11,8 @@ public class LifeOfDuck : MonoBehaviour
 
     void Start()
     {
-        if (spawnPoint == null) spawn = Vector3.zero;
-        else UpdateSpawn(spawnPoint);
+        //if (spawnPoint == null) spawn = Vector3.zero;
+        //else UpdateSpawn(spawnPoint);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,7 +30,8 @@ public class LifeOfDuck : MonoBehaviour
 
     public void MoveToSpawn()
     {
-        transform.position = spawn;
+        //transform.position = spawn;
+        transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
     }
 
     public void EnableControls()
@@ -41,6 +42,7 @@ public class LifeOfDuck : MonoBehaviour
 
     public void UpdateSpawn(Transform t)
     {
-        spawn = new Vector3(t.position.x, t.position.y, t.position.z);
+        //spawn = new Vector3(t.position.x, t.position.y, t.position.z);
+        spawnPoint = t;
     }
 }
