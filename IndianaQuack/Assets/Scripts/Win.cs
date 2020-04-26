@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraChase : MonoBehaviour
+public class Win : MonoBehaviour
 {
     //public bool revert;
     //public bool used;
 
-    bool won = false;
-        public GameObject black;
+    public bool won = false;
+    public GameObject black;
+    public GameObject duck;
 
     /*private void OnTriggerEnter(Collider other)
     {
@@ -32,10 +33,11 @@ public class CameraChase : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !won)
+        if (!won)
         {
             black.SetActive(true);
             won = true;
+            duck.GetComponent<DuckMove>().enabled = false;
         }
     }
 }
