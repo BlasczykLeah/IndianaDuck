@@ -8,6 +8,7 @@ public class NewSpawnpoint : MonoBehaviour
     public bool activated = false;
     public Transform mySpawnpoint;
     AudioManager AM;
+    public Button myButton;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class NewSpawnpoint : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !activated)
         {
             AM.StopTime();
+            if(myButton != null) myButton.mySound = false;
             collision.gameObject.GetComponent<LifeOfDuck>().spawnPoint = mySpawnpoint;
             activated = true;
         }
