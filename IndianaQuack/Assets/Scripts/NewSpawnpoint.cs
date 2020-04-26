@@ -12,7 +12,8 @@ public class NewSpawnpoint : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<LifeOfDuck>().UpdateSpawn(mySpawnpoint);
+            //collision.gameObject.GetComponent<LifeOfDuck>().UpdateSpawn(mySpawnpoint);
+            collision.gameObject.GetComponent<LifeOfDuck>().spawnPoint = mySpawnpoint;
             this.enabled = false;
         }
     }
