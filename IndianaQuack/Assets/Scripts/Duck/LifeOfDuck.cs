@@ -8,10 +8,11 @@ public class LifeOfDuck : MonoBehaviour
     Vector3 spawn;
     public GameObject blackScreen;
     public bool dying = false;
+    GameObject bolder;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Deetth") || collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Deetth") || collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boulder"))
         {
             if (!dying)
             {
@@ -23,6 +24,8 @@ public class LifeOfDuck : MonoBehaviour
 
                 dying = true;
                 blackScreen.SetActive(true);
+
+                if (collision.gameObject.CompareTag("Boulder")) bolder = collision.gameObject;
             }
         }
     }
@@ -30,6 +33,11 @@ public class LifeOfDuck : MonoBehaviour
     public void MoveToSpawn()
     {
         transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
+        if (bolder != null)
+        {
+            bolder.GetComponent<Boulder>().resetBold();
+            bolder = null;
+        }
     }
 
     public void EnableControls()
