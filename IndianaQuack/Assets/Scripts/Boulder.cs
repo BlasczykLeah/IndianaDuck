@@ -9,11 +9,13 @@ public class Boulder : MonoBehaviour
     public Button myButton;
 
     Vector3 startingPoint;
+    AudioManager AM;
 
     void Start()
     {
         foreach(Collider c in playerColliders) Physics.IgnoreCollision(c, ignoreThis);
         startingPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        AM = AudioManager.instance;
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class Boulder : MonoBehaviour
     public void rollBoulder()
     {
         GetComponent<Rigidbody>().isKinematic = false;
+        AM.RollRock();
     }
 
     public void resetBold()

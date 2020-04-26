@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     public AudioSource quack;
     public AudioSource clock;
+    public AudioSource rock;
 
     public static AudioManager instance;
 
@@ -36,5 +37,10 @@ public class AudioManager : MonoBehaviour
     public void StopTime()
     {
         clock.Stop();
+    }
+
+    public void RollRock()
+    {
+        rock.Play();
     }
 }
