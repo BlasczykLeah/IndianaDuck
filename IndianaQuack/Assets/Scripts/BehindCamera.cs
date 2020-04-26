@@ -5,6 +5,7 @@ using UnityEngine;
 public class BehindCamera : MonoBehaviour
 {
     CameraAutoZoom zoom;
+    public bool canCheckStay;
 
     private void Awake()
     {
@@ -16,6 +17,14 @@ public class BehindCamera : MonoBehaviour
         if (!other.CompareTag("Enemy") && !other.CompareTag("Player"))
         {
             zoom.zoomingOut = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Enemy") && !other.CompareTag("Player") && canCheckStay)
+        {
+            zoom.zoomingOut = zoom.zoomingIn = false;
         }
     }
 }
