@@ -138,18 +138,26 @@ public class EnemyPatrol : MonoBehaviour
 
     void UpdateDestination()
     {
-        if (!reverse) currentPoint++;
-        else currentPoint--;
-
-        if(currentPoint >= movementCorners.Length || currentPoint < 0)
+        if (movementCorners.Length > 2)
         {
-            if (movementLoops) currentPoint = 0;
-            else
+            if (!reverse) currentPoint++;
+            else currentPoint--;
+
+            if (currentPoint >= movementCorners.Length || currentPoint < 0)
             {
-                if (reverse) currentPoint += 2;
-                else currentPoint -= 2;
-                reverse = !reverse;
+                if (movementLoops) currentPoint = 0;
+                else
+                {
+                    if (reverse) currentPoint += 2;
+                    else currentPoint -= 2;
+                    reverse = !reverse;
+                }
             }
+        }
+        else
+        {
+            if (currentPoint == 0) currentPoint = 1;
+            else currentPoint = 0;
         }
     }
 
