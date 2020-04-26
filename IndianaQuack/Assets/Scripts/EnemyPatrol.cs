@@ -30,12 +30,15 @@ public class EnemyPatrol : MonoBehaviour
     public LayerMask obstacleMask;
 
     Rigidbody rb;
+    Animator anim;
     NavMeshAgent agent;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
+
         MoveToPoint(currentPoint);
         StartCoroutine("DelayTargetFinder", 0.2F);
     }
@@ -83,6 +86,10 @@ public class EnemyPatrol : MonoBehaviour
                 MoveToPoint(currentPoint);
             }
         }
+
+        float speed = Mathf.Abs(agent.velocity.x) + Mathf.Abs(agent.velocity.y);
+        if (speed < 0.01F) anim.SetBool("Moving", false);
+        else anim.SetBool("Moving", true);
     }
 
     #region Field of View
