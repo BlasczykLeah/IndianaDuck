@@ -8,13 +8,12 @@ public class NewSpawnpoint : MonoBehaviour
     public bool activated = false;
     public Transform mySpawnpoint;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !activated)
         {
-            //collision.gameObject.GetComponent<LifeOfDuck>().UpdateSpawn(mySpawnpoint);
             collision.gameObject.GetComponent<LifeOfDuck>().spawnPoint = mySpawnpoint;
-            this.enabled = false;
+            activated = true;
         }
     }
 }

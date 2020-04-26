@@ -9,19 +9,18 @@ public class LifeOfDuck : MonoBehaviour
     public GameObject blackScreen;
     public bool dying = false;
 
-    void Start()
-    {
-        //if (spawnPoint == null) spawn = Vector3.zero;
-        //else UpdateSpawn(spawnPoint);
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
-        if (!dying)
+        if (collision.gameObject.CompareTag("Deetth") || collision.gameObject.CompareTag("Enemy"))
         {
-            if (collision.gameObject.CompareTag("Deetth") || collision.gameObject.CompareTag("Enemy"))
+            if (!dying)
             {
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
                 GetComponent<DuckMove>().enabled = false;
+                GetComponent<DuckJump>().enabled = false;
+                GetComponent<Animator>().SetBool("Run", false);
+                GetComponent<Animator>().SetBool("Fly", false);
+
                 dying = true;
                 blackScreen.SetActive(true);
             }
@@ -30,19 +29,14 @@ public class LifeOfDuck : MonoBehaviour
 
     public void MoveToSpawn()
     {
-        //transform.position = spawn;
         transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
     }
 
     public void EnableControls()
     {
+        GetComponent<DuckJump>().enabled = true;
         GetComponent<DuckMove>().enabled = true;
         dying = false;
-    }
-
-    public void UpdateSpawn(Transform t)
-    {
-        //spawn = new Vector3(t.position.x, t.position.y, t.position.z);
-        spawnPoint = t;
+        blackScreen.SetActive(false);
     }
 }

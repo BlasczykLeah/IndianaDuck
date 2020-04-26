@@ -13,6 +13,6 @@ public class Respawn : MonoBehaviour
     public void Step2()
     {
         lod.EnableControls();
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 }
