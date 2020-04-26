@@ -192,6 +192,7 @@ MonoBehaviour:
   isColliding: 0
   zoomingIn: 0
   zoomingOut: 0
+  ibc: {fileID: 1702380833}
 --- !u!1 &1070039536
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +202,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1070039537}
+  - component: {fileID: 1702380834}
+  - component: {fileID: 1702380833}
   m_Layer: 8
   m_Name: CenterPoint
   m_TagString: Untagged
@@ -215,13 +218,41 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070039536}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.50362307, y: 0.0000001192093, z: 0.0037365856, w: 0.8639155}
   m_LocalPosition: {x: 0, y: 0.0439, z: 0.0378}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1519696913}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60.479004, y: 0.43800002, z: 0.75100005}
+--- !u!136 &1702380834
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070039536}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.019963857
+  m_Height: 0.20162444
+  m_Direction: 1
+  m_Center: {x: 0.000000009615368, y: 0.10785455, z: 0.004050584}
+--- !u!114 &1702380833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070039536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18dc5f62be5718548baecc622ad3278b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hittingCamera: 0
+  c: {fileID: 354777250}
 --- !u!1 &1519696912
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xAxiz: 0
   yAxiz: 0
-  power: 2
+  power: 4
+  inverter: -1
 --- !u!1 &2095253181
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,7 +604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpables:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 1024
   onGround: 0
   isJumping: 0
   isGliding: 0
