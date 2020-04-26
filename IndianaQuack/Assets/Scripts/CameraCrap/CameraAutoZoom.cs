@@ -16,12 +16,15 @@ public class CameraAutoZoom : MonoBehaviour
     float waitingTime = 0.5F;
 
     BehindCamera bc;
+    public InBetweenCollision ibc;
 
     // Start is called before the first frame update
     void Awake()
     {
         Physics.IgnoreCollision(GetComponent<Collider>(), transform.GetChild(0).GetComponent<Collider>());
+        Physics.IgnoreCollision(transform.GetChild(0).GetComponent<Collider>(), ibc.GetComponent<Collider>());
         bc = transform.GetChild(0).GetComponent<BehindCamera>();
+        
     }
 
     // Update is called once per frame
@@ -66,11 +69,18 @@ public class CameraAutoZoom : MonoBehaviour
     {
         if(!other.CompareTag("Enemy") && !other.CompareTag("Player"))
         {
-            bc.canCheckStay = false;
+            if (other == ibc.GetComponent<Collider>())
+            {
+                ibc.hittingCamera = true;
+            }
+            else
+            {
+                bc.canCheckStay = false;
 
-            isColliding = true;
-            zoomingIn = true;
-            if (zoomingOut) zoomingOut = false;
+                isColliding = true;
+                zoomingIn = true;
+                if (zoomingOut) zoomingOut = false;
+            }
         }
     }
 
@@ -78,10 +88,17 @@ public class CameraAutoZoom : MonoBehaviour
     {
         if (!other.CompareTag("Enemy") && !other.CompareTag("Player"))
         {
-            bc.canCheckStay = true;
+            if (other == ibc.GetComponent<Collider>())
+            {
+                ibc.hittingCamera = false;
+            }
+            else
+            {
+                bc.canCheckStay = true;
 
-            isColliding = false;
-            zoomingIn = false;
+                isColliding = false;
+                zoomingIn = false;
+            }
         }
     }
 }

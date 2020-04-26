@@ -6,6 +6,7 @@ public class CameraMove : MonoBehaviour
 {
     public float xAxiz = 0, yAxiz = 0;
     public float power = 1;
+    public int inverter = 1;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class CameraMove : MonoBehaviour
 
         if(yAxiz > -12 && yAxiz < 12)
         {
-            transform.RotateAround(transform.position, transform.right, rotVert * power);
+            transform.RotateAround(transform.position, transform.right, rotVert * power * inverter);
         }
         else
         {
@@ -34,7 +35,7 @@ public class CameraMove : MonoBehaviour
                 yAxiz = 12;
         }
 
-        float rotHor = -Input.GetAxis("Mouse X");
-        transform.RotateAround(transform.position, -Vector3.up, rotHor * power);
+        //float rotHor = -Input.GetAxis("Mouse X");
+        //transform.RotateAround(transform.position, -Vector3.up, rotHor * power);
     }
 }
