@@ -19,4 +19,9 @@ public class TitleScene : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void GoToStartAnim()
+    {
+        SceneManager.LoadScene(2);
+    }
 }
