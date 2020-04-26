@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 281037589}
   - component: {fileID: 281037590}
-  - component: {fileID: 281037591}
+  - component: {fileID: 1165985186}
   m_Layer: 8
   m_Name: BehindCamera
   m_TagString: Untagged
@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c881ff6ebf8e944f813d9f7c868ad14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &281037591
-CapsuleCollider:
+  canCheckStay: 0
+--- !u!65 &1165985186
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -54,10 +55,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.27984175
-  m_Height: 1.02603
-  m_Direction: 1
-  m_Center: {x: -0.06673372, y: -0.12775154, z: -0.5806073}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.9999999, z: 0.85898876}
+  m_Center: {x: -0.000000039148667, y: 0.0000000029143228, z: -0.4098266}
 --- !u!1 &897826506
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.35761052
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &354777250
 MonoBehaviour:

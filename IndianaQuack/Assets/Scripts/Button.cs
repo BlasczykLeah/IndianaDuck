@@ -23,12 +23,13 @@ public class Button : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            if(!startTimer) anim.SetBool("Open", true);
             startTimer = true;
-            anim.SetBool("Open", true);
+            timeLeft = maxTime;
         }
     }
 
