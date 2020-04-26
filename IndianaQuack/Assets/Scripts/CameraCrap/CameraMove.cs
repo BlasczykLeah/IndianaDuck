@@ -10,7 +10,7 @@ public class CameraMove : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = false;
+        
     }
 
     private void FixedUpdate()

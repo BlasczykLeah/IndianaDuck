@@ -10,6 +10,7 @@ public class Button : MonoBehaviour
     public bool boulder;
     public Boulder b;
     AudioManager AM;
+    public bool mySound;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class Button : MonoBehaviour
             if (!startTimer && !boulder)
             {
                 AM.Time();
+                mySound = true;
                 anim.SetBool("Open", true);
                 //AM.Time();
             }
@@ -45,6 +47,7 @@ public class Button : MonoBehaviour
                 maxTime = 99999999;
                 b.rollBoulder();
                 boulder = false;
+                collision.gameObject.GetComponent<LifeOfDuck>().bolder = b.gameObject;
 
             }
         }
@@ -58,7 +61,8 @@ public class Button : MonoBehaviour
         if (timeLeft <= 0)
         {
             startTimer = false;
-            //AM.StopTime();
+            if(mySound) AM.StopTime();
+            mySound = false;
             timeLeft = maxTime;
             anim.SetBool("Open", false);
         }
