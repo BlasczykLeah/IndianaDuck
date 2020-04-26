@@ -11,12 +11,15 @@ public class QuackOfCourage : MonoBehaviour
     public float quackCooldown = 2F;
     float quackWaitTime;
 
+    AudioManager am;
+
     public float delayQuack = 0.2F;
 
     // Start is called before the first frame update
     void Start()
     {
         quackWaitTime = quackCooldown;
+        am = AudioManager.instance;
     }
 
     // Update is called once per frame
@@ -36,6 +39,7 @@ public class QuackOfCourage : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 hasQuacked = true;
+                am.Courage();
                 Debug.Log("QUACK");
                 Invoke("StunEm", delayQuack);
             }
