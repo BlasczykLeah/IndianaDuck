@@ -43,6 +43,7 @@ public class Boulder : MonoBehaviour
         if (other.CompareTag("BoulderStop"))
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
+            Invoke("resetBold", 5F);
         }
     }
 }
