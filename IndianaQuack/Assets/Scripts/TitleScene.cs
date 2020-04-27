@@ -32,4 +32,9 @@ public class TitleScene : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void end()
+    {
+        SceneManager.LoadScene(3);
+    }
 }
