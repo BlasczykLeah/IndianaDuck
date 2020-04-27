@@ -8,11 +8,6 @@ public class CameraMove : MonoBehaviour
     public float power = 1;
     public int inverter = 1;
 
-    void Start()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         MoveCamera();

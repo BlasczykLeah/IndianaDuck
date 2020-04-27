@@ -9,6 +9,7 @@ public class DuckMove : MonoBehaviour
 
     public float moveSpeed, rotSpeed;
     private float vert, horz;
+    public int invertX = 1, invertY = 1;
 
     void Start()
     {
@@ -27,8 +28,8 @@ public class DuckMove : MonoBehaviour
 
     void Waddle()
     {
-        vert = Input.GetAxisRaw("Vertical");
-        horz = Input.GetAxisRaw("Horizontal");
+        vert = Input.GetAxisRaw("Vertical") * invertX;
+        horz = Input.GetAxisRaw("Horizontal") * invertY;
 
         rb.velocity = transform.forward * vert * moveSpeed * Time.fixedDeltaTime * -1;
         transform.Rotate((transform.up * horz) * rotSpeed * Time.fixedDeltaTime);
